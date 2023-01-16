@@ -25,7 +25,7 @@ exports.config = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
-  specs: ["./test/specs/android/delete-note.spec.js"],
+  specs: ["./test/specs/android/delete-note.screen.spec.js"],
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
@@ -54,7 +54,7 @@ exports.config = {
   //
   capabilities: [
     {
-      platformName: "Android",
+      "platformName": "Android",
       "appium:deviceName": "Pixel 3",
       "appium:platformVersion": "11.0",
       "appium:automationName": "UIAutomator2",
