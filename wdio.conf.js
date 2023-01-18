@@ -25,7 +25,7 @@ exports.config = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
-  specs: ["./test/specs/android/delete-note.screen.spec.js"],
+  specs: ["./test/specs/ios/add-item.spec.js"],
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
@@ -53,13 +53,20 @@ exports.config = {
   // https://saucelabs.com/platform/platform-configurator
   //
   capabilities: [
+    // {
+    //   "platformName": "Android",
+    //   "appium:deviceName": "Pixel 3",
+    //   "appium:platformVersion": "11.0",
+    //   "appium:automationName": "UIAutomator2",
+    //   "appium:app": path.join(process.cwd(), "./app/android/ColorNote.apk"),
+    //   "appium:autoGrantPermissions": true
+    // }
     {
-      "platformName": "Android",
-      "appium:deviceName": "Pixel 3",
-      "appium:platformVersion": "11.0",
-      "appium:automationName": "UIAutomator2",
-      "appium:app": path.join(process.cwd(), "./app/android/ColorNote.apk"),
-      "appium:autoGrantPermissions": true
+      platformName: "ios",
+      "appium:deviceName": "iPhone 14",
+      "appium:platformVersion": "16.2",
+      "appium:automationName": "XCUITest",
+      "appium:app": path.join(process.cwd(), "./app/ios/MVCTodo.app")
     }
   ],
   //
