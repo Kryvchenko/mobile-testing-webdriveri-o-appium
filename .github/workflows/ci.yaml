@@ -5,8 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+        uses: actions/checkout@v2
+      - name: Install Node
+        uses: actions/setup-node@v1
         with:
           node-version: 18
       - name: Install
@@ -16,7 +17,8 @@ jobs:
           BROWSERSTACK_USER: { { secrets.BS_USER } }
           BROWSERSTACK_KEY: { { secrets.BS_KEY } }
         run: npx wdio config/wdio.android.b-stack.conf.js --spec test/specs/android/delete-note.spec.js
-      - uses: actions/upload-artifact@v1
+      - name: On failure
+        uses: actions/upload-artifact@v1
         if: failure()
         with:
           name: logs
