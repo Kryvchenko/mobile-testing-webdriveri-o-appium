@@ -11,7 +11,7 @@
 3. Android Studio
 4. Xcode
 5. Babel (to take advantage of late js functions)
-6. Eslint
+6. Eslint plugin
 7. Browser Stack
 8. Appium Inspector
 9. Dotenv
