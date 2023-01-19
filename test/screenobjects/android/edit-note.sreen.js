@@ -1,45 +1,43 @@
-const AddNoteSpec = require("../../screenobjects/android/add-note.screen");
+import AddNoteSpec from "../../screenobjects/android/add-note.screen";
 
 class EditNoteSpec {
   get menuBtn() {
     return $(
-     "//*[@resource-id='com.socialnmobile.dictapps.notepad.color.note:id/menu_btn']"
-   )
- } 
+      "//*[@resource-id='com.socialnmobile.dictapps.notepad.color.note:id/menu_btn']"
+    );
+  }
   get deleteBtn() {
-    return $(
-      "//*[@text='Delete']"
-    )
- } 
+    return $("//*[@text='Delete']");
+  }
   get moreBtn() {
-    return  $(
+    return $(
       "//android.widget.FrameLayout[@content-desc='More']/android.widget.ImageView"
-    )
- } 
- get allMenuBtns() {
+    );
+  }
+  get allMenuBtns() {
     return $$("android.widget.TextView");
- }
- get firstNote() {
+  }
+  get firstNote() {
     return $(
-    "//*[@resource-id='com.socialnmobile.dictapps.notepad.color.note:id/premium_gone_margin']"
-  )
- }
- get noteText() {
+      "//*[@resource-id='com.socialnmobile.dictapps.notepad.color.note:id/premium_gone_margin']"
+    );
+  }
+  get noteText() {
     return $(
-    "//*[@resource-id='com.socialnmobile.dictapps.notepad.color.note:id/view_note']"
-  );
- }
-async skipTutorial() {
+      "//*[@resource-id='com.socialnmobile.dictapps.notepad.color.note:id/view_note']"
+    );
+  }
+  async skipTutorial() {
     await AddNoteSpec.skipBtn.click();
     //assertion
     await expect(AddNoteSpec.addNoteText).toBeDisplayed();
-}
- /**
+  }
+  /**
    * Adding note heading and body
    * @param  {String} noteHeading - heading text
    * @param  {String} noteBody - body text
    */
-async addAndSaveNote(noteHeading, noteBody) {
+  async addAndSaveNote(noteHeading, noteBody) {
     await AddNoteSpec.addNoteText.click();
     await AddNoteSpec.addNoteType.click();
     //add note title
@@ -49,23 +47,21 @@ async addAndSaveNote(noteHeading, noteBody) {
     //save changes
     await AddNoteSpec.saveNote();
     //assertion
-    await expect(
-      AddNoteSpec.editBtn
-    ).toBeDisplayed();
-}
+    await expect(AddNoteSpec.editBtn).toBeDisplayed();
+  }
   /**
    * Performs a click on button from menu
    * @param  {String} btnName - button from menu
    */
-async openTrashCanAndClickOnFirstNote(btnName) {
-  const btnList = await this.allMenuBtns;
-  for (const el of btnList) {
-    if ((await el.getText()) === btnName) {
-      el.click();
+  async openTrashCanAndClickOnFirstNote(btnName) {
+    const btnList = await this.allMenuBtns;
+    for (const el of btnList) {
+      if ((await el.getText()) === btnName) {
+        el.click();
+      }
     }
+    await this.firstNote.click();
   }
-  await this.firstNote.click();
-}
 }
 
-module.exports = new EditNoteSpec();
+export default new EditNoteSpec();

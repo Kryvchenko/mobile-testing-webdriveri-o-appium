@@ -23,7 +23,7 @@ class AddNoteScreen {
   get editBtn() {
     return $(
       "//*[@resource-id='com.socialnmobile.dictapps.notepad.color.note:id/edit_btn']"
-    )
+    );
   }
   async saveNote() {
     await driver.back();
@@ -31,4 +31,4 @@ class AddNoteScreen {
   }
 }
 
-module.exports = new AddNoteScreen();
+export default new AddNoteScreen();

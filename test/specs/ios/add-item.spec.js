@@ -1,27 +1,42 @@
+import ListScreen from "../../screenobjects/ios/todo-list.screen";
+import ItemScreen from "../../screenobjects/ios/todo-item.screen";
+import constants from "../../utils/constants";
+
 describe("Todo item", () => {
-  it("Create a todo list", async () => {
+  before(async () => {
     //Create TODO list
-    await $("//*[@name='Create list']").click();
-    const inputFiled = 'type == "XCUIElementTypeTextField"';
-    await $(`-ios predicate string:${inputFiled}`).addValue("Get job in IT");
-    await $("~Create").click();
-    await expect(await $("~Get job in IT")).toBeExisting();
+    await ListScreen.createListBtn.click();
+    await ListScreen.listNameInput.addValue(constants.todo_list_name);
+    await ListScreen.createBtn.click();
   });
   it("Create new todo item", async () => {
     //Create TODO item
-    await $("~Get job in IT").click();
-    await $("//*[@name='Create item']").click();
-    await $("//*[@value='Title']").addValue("Walk dog");
-    await $("//*[@value='Due']").click();
-    const date = await $("~Date Picker");
-    await date.click({ x: -100 });
-    await $("~Next Month").click();
-    await $("~Thursday, February 23").click();
-    await date.click({ x: -100 });
-    await $("~Create").click();
+    const todoItem = await ListScreen.listNameField(constants.todo_list_name);
+    //select item
+    await todoItem.click();
+    //add new todo item
+    await ItemScreen.createItemBtn.click();
+    //add title
+    await ItemScreen.titleInputField.addValue(constants.todo_list_title);
+    //pick a date
+    await ItemScreen.dateInputField.click();
+    await ItemScreen.datePicker.click({ x: -100 });
+    await ItemScreen.getByAccessabilityId(
+      constants.accessability_id_month
+    ).click();
+    await ItemScreen.getByAccessabilityId(constants.check_full_date).click();
+    //save date value
+    const date = await ItemScreen.datePicker.getText();
+    await ItemScreen.datePicker.click({ x: -100 });
+    //click create btn
+    await ItemScreen.getByAccessabilityId(
+      constants.accessability_id_create
+    ).click();
 
     //assertions
-    await expect(await date).toHaveText("Feb 23, 2023");
-    await expect(await $("~Due February 23, 2023")).toBeExisting();
+    await expect(await date).toEqual(constants.check_date);
+    await expect(
+      await ItemScreen.getByAccessabilityId(constants.check_generated_date)
+    ).toBeExisting();
   });
 });

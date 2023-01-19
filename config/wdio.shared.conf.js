@@ -1,5 +1,3 @@
-const path = require("path");
-
 exports.config = {
   //
   // ====================
@@ -8,7 +6,7 @@ exports.config = {
   // WebdriverIO supports running e2e tests as well as unit and component tests.
   runner: "local",
 
-  port: 4723,
+  // port: 4723,
   //
   // ==================
   // Specify Test Files
@@ -24,12 +22,12 @@ exports.config = {
   // If you are calling `wdio` from an NPM script (see https://docs.npmjs.com/cli/run-script),
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
-  //
-  specs: ["./test/specs/ios/add-item.spec.js"],
-  // Patterns to exclude.
-  exclude: [
-    // 'path/to/excluded/files'
-  ],
+
+  // specs: ["./test/specs/**/add-item*.js"],
+  // // Patterns to exclude.
+  // exclude: [
+  //   // 'path/to/excluded/files'
+  // ],
   //
   // ============
   // Capabilities
@@ -52,23 +50,7 @@ exports.config = {
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
   // https://saucelabs.com/platform/platform-configurator
   //
-  capabilities: [
-    // {
-    //   "platformName": "Android",
-    //   "appium:deviceName": "Pixel 3",
-    //   "appium:platformVersion": "11.0",
-    //   "appium:automationName": "UIAutomator2",
-    //   "appium:app": path.join(process.cwd(), "./app/android/ColorNote.apk"),
-    //   "appium:autoGrantPermissions": true
-    // }
-    {
-      platformName: "ios",
-      "appium:deviceName": "iPhone 14",
-      "appium:platformVersion": "16.2",
-      "appium:automationName": "XCUITest",
-      "appium:app": path.join(process.cwd(), "./app/ios/MVCTodo.app")
-    }
-  ],
+  // capabilities: [],
   //
   // ===================
   // Test Configurations
@@ -116,7 +98,7 @@ exports.config = {
   // Services take over a specific job you don't want to take care of. They enhance
   // your test setup with almost no effort. Unlike plugins, they don't add new
   // commands. Instead, they hook themselves up into the test process.
-  services: ["appium"],
+  //services: ["appium"],
 
   // Framework you want to run your specs with.
   // The following are supported: Mocha, Jasmine, and Cucumber

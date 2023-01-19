@@ -1,4 +1,4 @@
-const AddNoteSpec = require("../../screenobjects/android/add-note.screen");
+import AddNoteSpec from "../../screenobjects/android/add-note.screen";
 import constants from "../../utils/constants";
 
 describe("Add notes screen", () => {
@@ -17,8 +17,6 @@ describe("Add notes screen", () => {
     //save changes
     await AddNoteSpec.saveNote();
     //assertion
-    await expect(
-      AddNoteSpec.editBtn
-    ).toBeDisplayed();
+    await expect(AddNoteSpec.editBtn).toBeDisplayed();
   });
 });
