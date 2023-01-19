@@ -12,10 +12,10 @@
 4. Xcode
 5. Babel (to take advantage of late js functions)
 6. Eslint plugin
-7. Browser Stack
+7. Browser Stack (cloud testing infrastructure)
 8. Appium Inspector
 9. Dotenv
-10. GitHub Actions
+10. GitHub Actions (run test automatically on push command on github and browser stack)
 
 # MacOS machine setup for Android Test
 
