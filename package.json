@@ -7,7 +7,8 @@
     "test-ios": "npx wdio config/wdio.ios.conf.js",
     "test-android": "npx wdio config/wdio.android.conf.js",
     "test-ios-bs": "npx wdio config/wdio.ios.b-stack.conf.js",
-    "test-android-bs": "npx wdio config/wdio.android.b-stack.conf.js"
+    "test-android-bs": "npx wdio config/wdio.android.b-stack.conf.js",
+    "wdio": "npx wdio wdio.conf.js"
   },
   "keywords": [],
   "author": "",
