@@ -40,7 +40,7 @@
 - clone this repo
 - run `npm install`
 
-# To run a test (to run a specific test check the spec path in wdio.conf files)
+# To run a test (to run a specific test add --spec flag plus test file path)
 
 1. Run iOS test suite `npm run test-ios`
 2. Run android test suite `npm run test-android`
